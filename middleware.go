@@ -2,7 +2,6 @@ package cas
 
 import (
 	"net/http"
-    "fmt"
 
 	"github.com/golang/glog"
 )
