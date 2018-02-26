@@ -16,21 +16,16 @@ func (c *Client) Handler() func(http.ResponseWriter, *http.Request, http.Handler
 		setClient(r, c)
         c.getSession(w, r)
 
-        fmt.Printf("Handler called...\n")
-
 		if !IsAuthenticated(r) {
-            fmt.Printf("Redirecting to login...\n")
 			RedirectToLogin(w, r)
 			return
 		}
 
 		if r.URL.Path == "/logout" {
-            fmt.Printf("Redirecting to logout...\n")
 			RedirectToLogout(w, r)
 			return
 		}
 
-        fmt.Printf("Handler exited...\n")
         next(w, r)
 	}
 }
